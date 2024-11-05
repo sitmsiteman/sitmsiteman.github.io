@@ -1,7 +1,9 @@
+GRFLAGS = -Thtml -Kutf8	
+
 all: index.html page.html
 
 %.html : %.tr
-	groff -ms -Thtml $< > $@
+	groff ${GRFLAGS} $< > $@
 
 clean:
 	rm *.html
