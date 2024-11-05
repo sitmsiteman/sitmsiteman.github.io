@@ -1,10 +1,13 @@
-.HTL Hello World
-.HnS 1
+.TL
+Blog
+.PP
+.ND
+.PP
+.SH
+Pages
+.PP
+.URL page.html "blog"
 .HR
-GNU Troff
-.URL http://groff.ffii.org (Groff)
-— a
-.URL http://www.gnu.org/ GNU
-project.
-.HR
-.HnE
+.SH
+About
+.PP

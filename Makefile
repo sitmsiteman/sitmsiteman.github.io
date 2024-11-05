@@ -1,7 +1,7 @@
-all: *.html
+all: index.html page.html
 
 %.html : %.tr
-	groff -Thtml $< > $@
+	groff -ms -Thtml $< > $@
 
 clean:
 	rm *.html
