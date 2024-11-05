@@ -1,0 +1,10 @@
+.HTL Hello World
+.HnS 1
+.HR
+GNU Troff
+.URL http://groff.ffii.org (Groff)
+— a
+.URL http://www.gnu.org/ GNU
+project.
+.HR
+.HnE
