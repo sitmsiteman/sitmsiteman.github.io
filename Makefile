@@ -5,5 +5,8 @@ all: index.html page.html
 %.html : %.tr
 	groff ${GRFLAGS} $< > $@
 
+clearCJK: *.html
+	./clearCJK
+
 clean:
 	rm *.html

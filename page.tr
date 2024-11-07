@@ -9,11 +9,12 @@ Blog
 .HnE
 .PIMG img/test.png
 .PP
-Testing Groff.
+Testing Groff. TODO: Fix CJK font spacing issue.
 .PP
 .HnS 2
 1. CJK Font test: 가나다라마
 .HnE
+안녕하세요. 내일은 무엇을 하세요?
 .HnS 2
 2. CJK Font test: いろはにほへと 漢字
 .HnE
