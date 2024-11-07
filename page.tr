@@ -1,3 +1,4 @@
+.HX 1
 .TL
 Blog
 .PP
@@ -8,8 +9,14 @@ Blog
 .HnE
 .PIMG img/test.png
 .PP
-Testing Groff
+Testing Groff.
 .PP
+.HnS 2
+1. CJK Font test: 가나다라마
+.HnE
+.HnS 2
+2. CJK Font test: いろはにほへと 漢字
+.HnE
 .FS
 this page was generated using groff and make.
 .FE
