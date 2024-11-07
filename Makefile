@@ -1,4 +1,4 @@
-GRFLAGS = -Thtml -Kutf8	
+GRFLAGS = -Thtml -Kutf8 -ms
 
 all: index.html page.html
 

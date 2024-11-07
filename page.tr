@@ -1,12 +1,15 @@
 .TL
-Entries
+Blog
 .PP
 .JOBNAME page
+.URL index.html Home
 .HnS 1
-Testing
-.HR
+2024/11/07 Test Page
 .HnE
-.HnS 1
-Testing 2
-.HR
-.HnE
+.PIMG img/test.png
+.PP
+Testing Groff
+.PP
+.FS
+this page was generated using groff and make.
+.FE

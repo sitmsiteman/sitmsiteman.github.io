@@ -1,13 +1,17 @@
 .TL
-Blog
+Apodosis
 .PP
 .ND
-.PP
 .SH
-Pages
+Blog
 .PP
-.URL page.html "blog"
+.URL page.html "Blog"
 .HR
 .SH
-About
+About this page
 .PP
+Trying to use groff_www to generate a minimal website.
+.HR
+.FS
+this page was generated using groff and make.
+.FE
