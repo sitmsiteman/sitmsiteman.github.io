@@ -15,7 +15,7 @@ TITLE="`awk '/^# /{for (i=2; i<=NF; i++) print $i}' $INPUT`"
 # Set title for the index.
 
 if [ -z "$TITLE" ]; then
-	TITLE="Blog"
+	TITLE="Apodosis"
 fi
 
 # Generate Index file.
