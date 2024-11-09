@@ -1,8 +1,0 @@
-#!/bin/sh
-
-for i in *.html; do
-	sed -i 's/; \&#/;\&#/g' $i
-	echo "remove space between CJK Letters"
-#	sed -i 's/;[ ]\{2,\}\&#/; \&#/g' $i
-#	echo "reduce 2+ spaces to 1 space between CJK Letters"
-done

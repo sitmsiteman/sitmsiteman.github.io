@@ -1,12 +1,11 @@
-GRFLAGS = -Thtml -Kutf8 -ms
+.SUFFIXES: .html .MD
 
-all: index.html page.html
+.MD.html: style/footer style/header
+	./gen.sh $< $@
 
-%.html : %.tr
-	groff ${GRFLAGS} $< > $@
-
-clearCJK: *.html
-	./clearCJK
+index.html: index mainpage style/footer style/header
+	./gen.sh index index.html
 
 clean:
 	rm *.html
+	rm index

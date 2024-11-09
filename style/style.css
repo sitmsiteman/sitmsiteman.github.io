@@ -1,0 +1,6 @@
+html	{ font-family:sans-serif }
+body	{ max-width: 800px; margin: 0 auto; padding:1rem; background-color: lightyellow; }
+p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+h1      { text-align: center }
