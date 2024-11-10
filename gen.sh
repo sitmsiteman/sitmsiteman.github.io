@@ -8,6 +8,10 @@ fi
 INPUT="$1"
 OUTPUT="$2"
 
+# Check OS
+
+PLATFORM=`uname`
+
 # Set title for the blog post.
 
 TITLE="`awk '/^# /{for (i=2; i<=NF; i++) print $i}' $INPUT`"
@@ -15,7 +19,7 @@ TITLE="`awk '/^# /{for (i=2; i<=NF; i++) print $i}' $INPUT`"
 # Set title for the index.
 
 if [ -z "$TITLE" ]; then
-	TITLE="Apodosis"
+	TITLE="Blog"
 fi
 
 # Generate Index file.
@@ -42,9 +46,15 @@ fi
 markdown "$INPUT" > tmp &
 echo "\t<title>$TITLE</title>\n</head>\n<body>" | cat style/header - tmp style/footer > $OUTPUT
 
-# Check File Birthdate and put it on the index.
-B_DATE=`stat -c %w $INPUT | cut -d ' ' -f 1`
-echo "$B_DATE [$TITLE]($OUTPUT \"$TITLE\")  " | tr '[:space:]' ' ' >> index
+# Check File Modified time and put it on the index.
+
+if [ "$PLATFORM" = "Linux" ]; then
+	M_DATE=`stat -c %Y $INPUT | date -I`
+else
+	M_DATE=`stat -f "%Sm" -t "%F" $INPUT`
+fi
+
+echo "$M_DATE [$TITLE]($OUTPUT \"$TITLE\")  " | tr '[:space:]' ' ' >> index
 
 rm tmp
 exit 0
