@@ -54,7 +54,7 @@ else
 	M_DATE=`stat -f "%Sm" -t "%F" $INPUT`
 fi
 
-echo "$M_DATE [$TITLE]($OUTPUT \"$TITLE\")  " | tr '[:space:]' ' ' >> index
+echo "* $M_DATE [$TITLE]($OUTPUT \"$TITLE\")  " | tr '[:space:]' ' ' >> index
 
 rm tmp
 exit 0
