@@ -55,6 +55,7 @@ else
 fi
 
 echo "* $M_DATE [$TITLE]($OUTPUT \"$TITLE\")  " | tr '[:space:]' ' ' >> index
+echo "\n" >> index
 
 rm tmp
 exit 0
