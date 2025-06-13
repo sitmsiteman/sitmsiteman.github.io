@@ -25,5 +25,5 @@ fi
 # Generate a blog post.
 
 markdown "$INPUT" > tmp &
-echo "\t<title>$TITLE</title>\n</head>\n<body>" | cat ../style/header - tmp ../style/footer > $OUTPUT
+echo "\t<title>$TITLE</title>\n</head>\n<body>" | cat style/header - tmp style/footer > $OUTPUT
 
