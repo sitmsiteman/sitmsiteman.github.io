@@ -65,15 +65,14 @@ wifi</title>
 <code>
 % cat &#47;net&#47;ether1&#47;ifstats
 </code></p>
-<p>The snippet below is shamelessly stolen from <code>wpa(8)</code> man page.
-<code>
-% bind -a &#39;#l1&#39; &#47;net
+<p>The snippet below is shamelessly stolen from <code>wpa(8)</code> man page.</p>
+<pre><code>% bind -a &#39;#l1&#39; &#47;net
 % aux&#47;wpa -s ESSID -p &#47;net&#47;ether1
 !Adding key: proto=wpapsk essid=ESSID
 password: *******
 !
 % ip&#47;ipconfig ether &#47;net&#47;ether1
-</code></p>
+</code></pre>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="changing-essid">Changing ESSID</h3>
 <p>If you enter the wrong ESSID, you can&#8217;t just run <code>aux&#47;wpa</code> again to change it.</p>

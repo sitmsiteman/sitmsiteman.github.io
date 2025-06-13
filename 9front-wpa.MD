@@ -66,6 +66,7 @@ To scan your available networks:
 ```
 
 The snippet below is shamelessly stolen from ```wpa(8)``` man page.
+
 ```
 % bind -a '#l1' /net
 % aux/wpa -s ESSID -p /net/ether1
