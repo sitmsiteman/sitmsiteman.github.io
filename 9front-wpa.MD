@@ -104,7 +104,7 @@ You need to terminate ```aux/wpa``` using ```kill(1)```, then restart ```aux/wpa
 
 ### Wrong passwords
 
-If you enter the wrong password, delete the key from the ```factotum``` and restarting ```aux/wpa``` as described above.
+If you enter the wrong password, delete the key from the ```factotum``` and restart ```aux/wpa``` as described above.
 
 ```
 % echo 'delkey proto=wpapsk essid=ESSID'>/mnt/factotum/ctl
