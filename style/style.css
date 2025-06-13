@@ -1,6 +1,6 @@
 html	{ font-family:sans-serif }
 body	{ max-width: 800px; margin: 0 auto; padding:1rem; background-color: lightyellow; }
 p       { margin-top: 10; margin-bottom: 10; vertical-align: top }
-pre     { margin-top: 10; margin-bottom: 10; margin-left: 20; vertical-align: top }
+pre     { margin-top: 10; margin-bottom: 10; vertical-align: top }
 table   { margin-top: 10; margin-bottom: 10; vertical-align: top }
 h1      { text-align: center }
