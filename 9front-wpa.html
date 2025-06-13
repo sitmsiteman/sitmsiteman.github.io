@@ -1,0 +1,102 @@
+<!-- Creator     : Apodosis -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta name="generator" content="Markdown">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="Content-Style" content="text/css">
+	<link rel="stylesheet" href="style/style.css">
+	<title>Using
+9front
+wifi</title>
+</head>
+<body>
+<h1 id="using-9front-wifi">Using 9front wifi</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>If you have a 9front-compatible Wi-Fi device (such as the iwn-6005), you need to download firmware from the 9front firmware Git repository:</p>
+<pre><code>% cd &#47;lib&#47;fimware
+% git&#47;clone gits:&#47;&#47;git.9front.org&#47;plan9front&#47;firmware .
+</code></pre>
+<p>Next, compile your kernel source code:</p>
+<ul>
+<li>386
+<code>
+% cd &#47;sys&#47;src&#47;9&#47;pc
+% mk install
+</code></li>
+<li>amd64
+<code>
+% cd &#47;sys&#47;src&#47;9&#47;pc64
+% mk install
+</code></li>
+<li>arm32 &#47; Raspberry Pi
+<code>
+% cd &#47;sys&#47;src&#47;9&#47;bcm
+% mk &#39;CONF=pi&#39; install
+% mk &#39;CONF=pi2&#39; install
+</code></li>
+<li>arm64 &#47; Raspberry Pi 3
+<code>
+% cd &#47;sys&#47;src&#47;9&#47;bcm64
+% mk install
+</code></li>
+</ul>
+<p>Then install the kernel:</p>
+<ul>
+<li><p>386
+<code>
+% 9fs 9fat
+% cp &#47;386&#47;9pc &#47;n&#47;9fat&#47;
+</code></p></li>
+<li><p>amd64
+<code>
+% 9fs 9fat
+% cp &#47;amd64&#47;9pc64 &#47;n&#47;9fat&#47;
+</code></p></li>
+</ul>
+<p>If you use an ESP partition:</p>
+<pre><code>% 9fs esp
+% cp &#47;amd64&#47;9pc64 &#47;n&#47;9fat&#47;
+</code></pre>
+<p>You may also want to check the complete guide for building source codes on the <a href="http://fqa.9front.org">FQA</a>.</p>
+<h2 id="using-wpa8">Using wpa(8)</h2>
+<p>You should bind your Wi-Fi Ethernet card to <code>&#47;net</code> and use <code>aux&#47;wpa</code> to connect to a Wi-Fi station.</p>
+<p>To scan your available networks:
+<code>
+% cat &#47;net&#47;ether1&#47;ifstats
+</code></p>
+<p>The snippet below is shamelessly stolen from <code>wpa(8)</code> man page.
+<code>
+% bind -a &#39;#l1&#39; &#47;net
+% aux&#47;wpa -s ESSID -p &#47;net&#47;ether1
+!Adding key: proto=wpapsk essid=ESSID
+password: *******
+!
+% ip&#47;ipconfig ether &#47;net&#47;ether1
+</code></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="changing-essid">Changing ESSID</h3>
+<p>If you enter the wrong ESSID, you can&#8217;t just run <code>aux&#47;wpa</code> again to change it.</p>
+<p>You need to terminate <code>aux&#47;wpa</code> using <code>kill(1)</code>, then restart <code>aux&#47;wpa</code>.</p>
+<pre><code>% kill wpa
+@{echo kill&#62;&#47;proc&#47;xxxx&#47;note} # wpa
+% @{echo kill&#62;&#47;proc&#47;xxxx&#47;note} # wpa
+% aux&#47;wpa -s CORRECT_ESSID -p &#47;net&#47;ether1
+...
+</code></pre>
+<h3 id="wrong-passwords">Wrong passwords</h3>
+<p>If you enter the wrong password, delete the key from the <code>factotum</code> and restarting <code>aux&#47;wpa</code> as described above.</p>
+<pre><code>% echo &#39;delkey proto=wpapsk essid=ESSID&#39;&#62;&#47;mnt&#47;factotum&#47;ctl
+...
+</code></pre>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://fqa.9front.org">FQA</a></li>
+<li><a href="http://man.9front.org">9front man page</a></li>
+</ul>
+<hr>
+<p>[<a href = "index.html">Home</a>]</p>
+<hr>
+<p><em>This page is generated using markdown, awk, tr, and make.</em></p>
+</body>
+</html>
