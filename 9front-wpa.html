@@ -19,41 +19,43 @@ wifi</title>
 </code></pre>
 <p>Next, compile your kernel source code:</p>
 <ul>
-<li>386
-<code>
-% cd &#47;sys&#47;src&#47;9&#47;pc
+<li>386</li>
+</ul>
+<pre><code>% cd &#47;sys&#47;src&#47;9&#47;pc
 % mk install
-</code></li>
-<li>amd64
-<code>
-% cd &#47;sys&#47;src&#47;9&#47;pc64
+</code></pre>
+<ul>
+<li>amd64</li>
+</ul>
+<pre><code>% cd &#47;sys&#47;src&#47;9&#47;pc64
 % mk install
-</code></li>
-<li>arm32 &#47; Raspberry Pi
-<code>
-% cd &#47;sys&#47;src&#47;9&#47;bcm
+</code></pre>
+<ul>
+<li>arm32 &#47; Raspberry Pi</li>
+</ul>
+<pre><code>% cd &#47;sys&#47;src&#47;9&#47;bcm
 % mk &#39;CONF=pi&#39; install
 % mk &#39;CONF=pi2&#39; install
-</code></li>
-<li>arm64 &#47; Raspberry Pi 3
-<code>
-% cd &#47;sys&#47;src&#47;9&#47;bcm64
-% mk install
-</code></li>
+</code></pre>
+<ul>
+<li>arm64 &#47; Raspberry Pi 3</li>
 </ul>
+<pre><code>% cd &#47;sys&#47;src&#47;9&#47;bcm64
+% mk install
+</code></pre>
 <p>Then install the kernel:</p>
 <ul>
-<li><p>386
-<code>
-% 9fs 9fat
-% cp &#47;386&#47;9pc &#47;n&#47;9fat&#47;
-</code></p></li>
-<li><p>amd64
-<code>
-% 9fs 9fat
-% cp &#47;amd64&#47;9pc64 &#47;n&#47;9fat&#47;
-</code></p></li>
+<li>386</li>
 </ul>
+<pre><code>% 9fs 9fat
+% cp &#47;386&#47;9pc &#47;n&#47;9fat&#47;
+</code></pre>
+<ul>
+<li>amd64</li>
+</ul>
+<pre><code>% 9fs 9fat
+% cp &#47;amd64&#47;9pc64 &#47;n&#47;9fat&#47;
+</code></pre>
 <p>If you use an ESP partition:</p>
 <pre><code>% 9fs esp
 % cp &#47;amd64&#47;9pc64 &#47;n&#47;9fat&#47;
@@ -61,10 +63,9 @@ wifi</title>
 <p>You may also want to check the complete guide for building source codes on the <a href="http://fqa.9front.org">FQA</a>.</p>
 <h2 id="using-wpa8">Using wpa(8)</h2>
 <p>You should bind your Wi-Fi Ethernet card to <code>&#47;net</code> and use <code>aux&#47;wpa</code> to connect to a Wi-Fi station.</p>
-<p>To scan your available networks:
-<code>
-% cat &#47;net&#47;ether1&#47;ifstats
-</code></p>
+<p>To scan your available networks:</p>
+<pre><code>% cat &#47;net&#47;ether1&#47;ifstats
+</code></pre>
 <p>The snippet below is shamelessly stolen from <code>wpa(8)</code> man page.</p>
 <pre><code>% bind -a &#39;#l1&#39; &#47;net
 % aux&#47;wpa -s ESSID -p &#47;net&#47;ether1

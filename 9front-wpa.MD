@@ -12,22 +12,29 @@ If you have a 9front-compatible Wi-Fi device (such as the iwn-6005), you need to
 Next, compile your kernel source code:
 
 - 386
+
 ```
 % cd /sys/src/9/pc
 % mk install
 ```
+
 - amd64
+
 ```
 % cd /sys/src/9/pc64
 % mk install
 ```
+
 - arm32 / Raspberry Pi
+
 ```
 % cd /sys/src/9/bcm
 % mk 'CONF=pi' install
 % mk 'CONF=pi2' install
 ```
+
 - arm64 / Raspberry Pi 3
+
 ```
 % cd /sys/src/9/bcm64
 % mk install
@@ -36,12 +43,14 @@ Next, compile your kernel source code:
 Then install the kernel:
 
 - 386
+
 ```
 % 9fs 9fat
 % cp /386/9pc /n/9fat/
 ```
 
 - amd64
+
 ```
 % 9fs 9fat
 % cp /amd64/9pc64 /n/9fat/
@@ -61,6 +70,7 @@ You may also want to check the complete guide for building source codes on the [
 You should bind your Wi-Fi Ethernet card to ```/net``` and use ```aux/wpa``` to connect to a Wi-Fi station.
 
 To scan your available networks:
+
 ```
 % cat /net/ether1/ifstats
 ```
