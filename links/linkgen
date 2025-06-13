@@ -24,6 +24,10 @@ fi
 
 # Generate a blog post.
 
+mkfifo tmp
+
 markdown "$INPUT" > tmp &
 echo "\t<title>$TITLE</title>\n</head>\n<body>" | cat style/header - tmp style/footer > $OUTPUT
+
+rm tmp
 
