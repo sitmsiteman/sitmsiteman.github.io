@@ -79,3 +79,11 @@ User-agent: YandexAdditionalBot
 User-agent: YouBot
 Disallow: /
 
+User-agent: *
+Crawl-delay: 5000000
+Disallow: /*.MD
+Disallow: /index
+Disallow: /mainpage
+Disallow: /*.sh
+Disallow: /*/*.sh
+Disallow: /links/*.MD
