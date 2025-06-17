@@ -80,7 +80,7 @@ User-agent: YouBot
 Disallow: /
 
 User-agent: *
-Crawl-delay: 5000000
+Crawl-delay: 3600
 Disallow: /*.MD
 Disallow: /index
 Disallow: /mainpage
