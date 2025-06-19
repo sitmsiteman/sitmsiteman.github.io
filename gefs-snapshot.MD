@@ -23,7 +23,7 @@ If you want to retrieve your data from a snapshot, you can simply use `mount(1)`
 
 ```
 % mount /srv/gefs /n/snapshot snapshot
-% cp /n/snapshot/home/user/mypreciousfile $home/
+% cp /n/snapshot/usr/$user/mypreciousfile $home/
 ...
 ```
 

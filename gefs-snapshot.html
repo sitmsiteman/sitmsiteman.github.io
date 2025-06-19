@@ -29,7 +29,7 @@ gefs% snap main new
 <h2 id="backup-from-snapshots">Backup from snapshots</h2>
 <p>If you want to retrieve your data from a snapshot, you can simply use <code>mount(1)</code>.</p>
 <pre><code>% mount &#47;srv&#47;gefs &#47;n&#47;snapshot snapshot
-% cp &#47;n&#47;snapshot&#47;home&#47;user&#47;mypreciousfile $home&#47;
+% cp &#47;n&#47;snapshot&#47;usr&#47;$user&#47;mypreciousfile $home&#47;
 ...
 </code></pre>
 <p>If your filesystem is corrupted, you may check which snapshot is uncorrupted and can be used as a backup point.</p>
