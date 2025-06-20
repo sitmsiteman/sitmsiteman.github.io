@@ -103,6 +103,6 @@ Please inform me if there is any error on the guide.
 ## References
 
 - [FQA](http://fqa.9front.org)
-
+- [plan9.ini(8)](http://man.9front.org/8/plan9.ini)
 - `/sys/lib/dist/mkfile`
 
