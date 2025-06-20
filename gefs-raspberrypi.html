@@ -1,0 +1,76 @@
+<!-- Creator     : Apodosis -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta name="generator" content="Markdown">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="Content-Style" content="text/css">
+	<link rel="stylesheet" href="style/style.css">
+	<title>User-friendly
+guide
+to
+setup
+a
+fresh
+`gefs`
+filesystem
+on
+RPi4
+(on
+9front)</title>
+</head>
+<body>
+<h1 id="user-friendly-guide-to-setup-a-fresh-filesystem-on-rpi4-on-9front">User-friendly guide to setup a fresh <code>gefs</code> filesystem on RPi4 (on 9front)</h1>
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>A storage device to install the 9front OS (e.g., an SD card)</li>
+<li>An additional arm64 system running 9front (e.g., QEMU)</li>
+</ul>
+<h2 id="write-9front-image-on-9front">Write 9front image on 9front</h2>
+<p>This step is <strong>not required</strong> but is provided for user convenience. You may skip it and manually install <code>FAT32</code> boot section for your RPi, but personally, I don&#8217;t find any advantages in doing so.</p>
+<p>Download the appropriate image on <a href="http://9front.org/releases">9front release page</a> and use <code>cat(1)</code> or <code>dd(1)</code> to write to the storage device you intend to use.</p>
+<p>The image file you downloaded is built using the script <code>&#47;sys&#47;lib&#47;dist&#47;mkfile</code>. As for now, the RPi3 image uses <code>hjfs</code> file system and allocates only 1885MB of storage, which isn&#8217;t very large.</p>
+<p>If desired, you can modify the following section of <code>&#47;sys&#47;lib&#47;dist&#47;mkfile</code> to increase the size and build a custom <code>hjfs</code> image.</p>
+<pre><code>082    %.pi3.img:
+...
+103        fatfiles=(&#47;env&#47;config.txt &#47;env&#47;cmdline.txt $bootcode $kernel)
+104        mb=1885 # storage vendors idea of 2GB
+105        mk $target.$pid.disk
+106        mv $target.$pid.disk $target
+...
+</code></pre>
+<p>However, if you&#8217;re planning to use more than 10GB of storage, this is not a clean solution.
+You’ll also need to manually modify the file system setup section in <code>&#47;sys&#47;lib&#47;dist&#47;mkfile</code> to switch to <code>gefs</code>.</p>
+<pre><code>082    %.pi3.img:
+...
+103        fatfiles=(&#47;env&#47;config.txt &#47;env&#47;cmdline.txt $bootcode $kernel)
+104        mb=1885 # storage vendors idea of 2GB
+105        mk $target.$pid.disk
+106        mv $target.$pid.disk $target
+...
+</code></pre>
+<h2 id="boot-another-9front-system-and-mount-the-storage">Boot another 9front system and mount the storage</h2>
+<p>You can boot a 9front system on arm64 using either a USB flash drive or QEMU. It&#8217;s up to you.</p>
+<p>Once booted, mount the prepared storage and run <code>inst&#47;start</code> script.</p>
+<p>Type <code>configfs</code> and select <code>gefs</code> file system.</p>
+<p>After that, use <code>partdisk</code> to remove the existing <code>PLAN9</code> partition and recreate it with the size you want. </p>
+<p><strong>Do not</strong> remove <code>FAT32</code> partition. That&#8217;s the only reason we used the image from the 9front web page.</p>
+<p>If you successfully make a new <code>PLAN9</code> partition, type <code>!rc</code> in the <code>inst&#47;start</code> script and subdivide the <code>PLAN9</code> partition into <code>NVRAM</code>, and <code>fs</code>.</p>
+<p><strong>Do not</strong> blindly copy the command below. Replace <code>sdXX</code> to the storage device you want to install the <code>gefs</code> file system on.</p>
+<pre><code>% disk&#47;prep -bw -a^(nvram fs) &#47;dev&#47;sdXX&#47;plan9
+% exit
+</code></pre>
+<p>After this, you can follow the normal install steps like <code>mountfs</code>, <code>confignet</code>, <code>mountdist</code>, <code>copydist</code>, <code>ndbsetup</code>, and <code>tzsetup</code> - except the <code>bootsetup</code> script. <strong>Do not</strong> run the <code>bootsetup</code> script.</p>
+<h2 id="notes">Notes</h2>
+<p>Please inform me if there is any error on the guide.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><p><a href="http://fqa.9front.org">FQA</a></p></li>
+<li><p><code>&#47;sys&#47;lib&#47;dist&#47;mkfile</code></p></li>
+</ul>
+<hr>
+<p>[<a href = "./">Home</a>]</p>
+<hr>
+<p><em>This page is generated using markdown, awk, tr, and make.</em></p>
+</body>
+</html>
