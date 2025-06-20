@@ -63,6 +63,38 @@ If you successfully make a new `PLAN9` partition, type `!rc` in the `inst/start`
 
 After this, you can follow the normal install steps like `mountfs`, `confignet`, `mountdist`, `copydist`, `ndbsetup`, and `tzsetup` - except the `bootsetup` script. **Do not** run the `bootsetup` script.
 
+## Modify the `cmdline.txt`
+
+After the setup, you can boot your RPi4 with a fresh `gefs` file system.
+
+When the system starts, you'll see the Plan 9 console with `bootargs` like the following:
+
+```
+...
+bootargs is (tcp, tls, il, local!device)[local!/dev/sdXX/fs] 
+```
+
+**Do not** blindly press the return key at this point. `gefs` requires the `-A` argument when booting.
+
+You’ll need to type something like this instead:
+
+```
+...
+bootargs is (tcp, tls, il, local!device)[local!/dev/sdXX/fs] local!/dev/sdXX/fs -A
+```
+
+To make the boot process more user-friendly, you should modify the `cmdline.txt` file in your `FAT32` partition.
+
+Start `rio` and run `9fs dos` to mount the `FAT32` partition.
+
+Then open `cmdline.txt` with your preferred text editor and modify it as follows:
+
+```
+console=0 bootargs='local!/dev/sdN0/fs -A'
+```
+
+Make sure to include the **single quotes** around the `bootargs` value. Omitting them will cause the `cmdline.txt` to be parsed incorrectly.
+
 ## Notes
 
 Please inform me if there is any error on the guide.
@@ -73,3 +105,4 @@ Please inform me if there is any error on the guide.
 - [FQA](http://fqa.9front.org)
 
 - `/sys/lib/dist/mkfile`
+
