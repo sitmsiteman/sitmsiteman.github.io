@@ -1,3 +1,4 @@
+* 2025-06-26 [OpenBSD on 9front vmx(1)](9front-vmx-openbsd.html "OpenBSD on 9front vmx(1)")   
 * 2025-06-20 [User-friendly guide to setup a fresh `gefs` filesystem on RPi4 (on 9front)](gefs-raspberrypi.html "User-friendly guide to setup a fresh `gefs` filesystem on RPi4 (on 9front)")   
 * 2025-06-16 [Using snapshots on gefs filesystem (on 9front)](gefs-snapshot.html "Using snapshots on gefs filesystem (on 9front)")   
 * 2025-06-14 [Using 9front wifi](9front-wpa.html "Using 9front wifi")   
